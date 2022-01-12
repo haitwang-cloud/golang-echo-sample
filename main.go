@@ -3,7 +3,8 @@ package main
 import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"net/http"
+	echoSwagger "github.com/swaggo/echo-swagger"
+	_ "github.com/swaggo/echo-swagger/example/docs"
 )
 
 func main() {
@@ -14,14 +15,8 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
-	// Routes
-	e.GET("/", hello)
+	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
 	// Start server
-	e.Logger.Fatal(e.Start(":8000"))
-}
-
-// Handler
-func hello(c echo.Context) error {
-	return c.String(http.StatusOK, "Hello, World!")
+	e.Logger.Fatal(e.Start(":8080"))
 }

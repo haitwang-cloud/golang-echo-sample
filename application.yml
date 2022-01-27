@@ -1,0 +1,37 @@
+database:
+  dialect: mysql
+  host: localhost
+  port: 3306
+  dbname: traffic_meta
+  username: root
+  password: root@admin
+  migration: true
+env:
+  environment: develop
+log:
+  request_log_format: ${remote_ip} ${account_name} ${uri} ${method} ${status}
+
+zap_config:
+  level: "info"
+  encoding: "console"
+  development: true
+  encoderConfig:
+    messageKey: "Msg"
+    levelKey: "Level"
+    timeKey: "Time"
+    nameKey: "Name"
+    callerKey: "Caller"
+    stacktraceKey: "St"
+    levelEncoder: "capital"
+    timeEncoder: "iso8601"
+    durationEncoder: "string"
+    callerEncoder: "short"
+  outputPaths:
+    - "stdout"
+  errorOutputPaths:
+    - "stdout"
+
+log_rotate:
+  maxsize: 3
+  maxage: 7
+  maxbackups: 7

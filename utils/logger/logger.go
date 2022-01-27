@@ -1,22 +1,15 @@
-package utils
+package logger
 
 import (
 	"errors"
 	"fmt"
+	"go-web-sample/utils/config"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
-	"io/ioutil"
 	"os"
 
 	"go.uber.org/zap"
-	"gopkg.in/yaml.v2"
 )
-
-// Config represents the setting for zap logger.
-type Config struct {
-	ZapConfig zap.Config        `json:"zap_config" yaml:"zap_config"`
-	LogRotate lumberjack.Logger `json:"log_rotate" yaml:"log_rotate"`
-}
 
 // Logger is an alternative implementation of *gorm.Logger
 type Logger struct {
@@ -24,28 +17,18 @@ type Logger struct {
 }
 
 // NewLogger create logger object for *gorm.DB from *echo.Logger
-func NewLogger(env string) *Logger {
-	configYaml, err := ioutil.ReadFile("./zaplogger." + env + ".yml")
-	if err != nil {
-		fmt.Printf("Failed to read logger configuration: %s", err)
-		os.Exit(2)
-	}
-	var myConfig *Config
-	if err = yaml.Unmarshal(configYaml, &myConfig); err != nil {
-		fmt.Printf("Failed to read zap logger configuration: %s", err)
-		os.Exit(2)
-	}
-	var zap *zap.Logger
-	zap, err = build(myConfig)
+func NewLogger(cfg *config.EnvConfig) *Logger {
+
+	var zapLogger *zap.Logger
+	zapLogger, err := build(cfg)
 	if err != nil {
 		fmt.Printf("Failed to compose zap logger : %s", err)
 		os.Exit(2)
 	}
-	sugar := zap.Sugar()
-	// set package varriable logger.
+	sugar := zapLogger.Sugar()
+	// set package variable logger.
 	logger := &Logger{Zap: sugar}
-	logger.Zap.Infof("Success to read zap logger configuration: zaplogger." + env + ".yml")
-	_ = zap.Sync()
+	_ = zapLogger.Sync()
 	return logger
 }
 
@@ -54,7 +37,7 @@ func (log *Logger) GetZapLogger() *zap.SugaredLogger {
 	return log.Zap
 }
 
-func build(cfg *Config) (*zap.Logger, error) {
+func build(cfg *config.EnvConfig) (*zap.Logger, error) {
 	var zapCfg = cfg.ZapConfig
 	enc, _ := newEncoder(zapCfg)
 	writer, errWriter := openWriters(cfg)
@@ -77,7 +60,7 @@ func newEncoder(cfg zap.Config) (zapcore.Encoder, error) {
 	return nil, errors.New("failed to set encoder")
 }
 
-func openWriters(cfg *Config) (zapcore.WriteSyncer, zapcore.WriteSyncer) {
+func openWriters(cfg *config.EnvConfig) (zapcore.WriteSyncer, zapcore.WriteSyncer) {
 	writer := open(cfg.ZapConfig.OutputPaths, &cfg.LogRotate)
 	errWriter := open(cfg.ZapConfig.ErrorOutputPaths, &cfg.LogRotate)
 	return writer, errWriter

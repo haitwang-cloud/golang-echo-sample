@@ -4,6 +4,7 @@ go 1.16
 
 require (
 	github.com/go-resty/resty/v2 v2.7.0
+	github.com/jinzhu/configor v1.2.1
 	github.com/labstack/echo/v4 v4.6.3
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect

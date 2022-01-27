@@ -7,7 +7,7 @@ import (
 
 func TestBibleClient(t *testing.T) {
 	// Create a resty client
-	book, chapter, verse := "John", "3", "100000000"
+	book, chapter, verse := "John", "3", "17"
 	client := NewBibleClient()
 	getResult, err := client.GetResult(book, chapter, verse)
 	if err != nil {

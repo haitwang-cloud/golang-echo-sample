@@ -3,6 +3,7 @@ package client
 import (
 	"fmt"
 	"github.com/go-resty/resty/v2"
+	"go-web-sample/utils"
 	"net/http"
 	"time"
 )
@@ -29,7 +30,7 @@ func NewBibleClient() *BibleClient {
 		// RetryConditionFunc type is for retry condition function
 		// input: non-nil Response OR request execution error
 		func(r *resty.Response, err error) bool {
-			return !IntContains(ValidStatus, r.StatusCode())
+			return !utils.IntContains(ValidStatus, r.StatusCode())
 		},
 	)
 	client.SetError(&HttpError{})

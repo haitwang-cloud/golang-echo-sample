@@ -12,7 +12,7 @@ log:
   request_log_format: ${remote_ip} ${account_name} ${uri} ${method} ${status}
 
 zap_config:
-  level: "debug"
+  level: "info"
   encoding: "console"
   development: true
   encoderConfig:

@@ -3,7 +3,7 @@ package client
 import (
 	"fmt"
 	"github.com/go-resty/resty/v2"
-	"go-web-sample/utils"
+	"github.com/haitwang-cloud/golang-echo-sample/utils"
 	"net/http"
 	"time"
 )

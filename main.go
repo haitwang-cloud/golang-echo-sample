@@ -1,13 +1,13 @@
 package main
 
 import (
+	"github.com/haitwang-cloud/golang-echo-sample/utils/config"
+	"github.com/haitwang-cloud/golang-echo-sample/utils/logger"
+	"github.com/haitwang-cloud/golang-echo-sample/utils/middlewares"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	echoSwagger "github.com/swaggo/echo-swagger"
 	_ "github.com/swaggo/echo-swagger/example/docs"
-	"go-web-sample/utils/config"
-	"go-web-sample/utils/logger"
-	"go-web-sample/utils/middlewares"
 )
 
 func main() {

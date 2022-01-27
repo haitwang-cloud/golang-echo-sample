@@ -1,4 +1,4 @@
 set -e
-image="haitwang/golang-echo-sample"
-tag=$image:echo
+image="golang-echo-sample"
+tag=$image:latest
 docker build -t $tag .

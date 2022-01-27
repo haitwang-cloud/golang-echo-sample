@@ -1,4 +1,4 @@
-module go-web-sample
+module github.com/haitwang-cloud/golang-echo-sample
 
 go 1.16
 

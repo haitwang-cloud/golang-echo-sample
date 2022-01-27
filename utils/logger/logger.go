@@ -3,7 +3,7 @@ package logger
 import (
 	"errors"
 	"fmt"
-	"go-web-sample/utils/config"
+	"github.com/haitwang-cloud/golang-echo-sample/utils/config"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
 	"os"

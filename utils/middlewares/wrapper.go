@@ -1,8 +1,8 @@
 package middlewares
 
 import (
-	"go-web-sample/utils/config"
-	"go-web-sample/utils/logger"
+	"github.com/haitwang-cloud/golang-echo-sample/utils/config"
+	"github.com/haitwang-cloud/golang-echo-sample/utils/logger"
 )
 
 // Wrapper represents a interface for accessing the data which sharing in overall application.

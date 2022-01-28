@@ -1,14 +1,23 @@
 package main
 
 import (
+	_ "github.com/haitwang-cloud/golang-echo-sample/docs"
+	"github.com/haitwang-cloud/golang-echo-sample/router"
 	"github.com/haitwang-cloud/golang-echo-sample/utils/config"
 	"github.com/haitwang-cloud/golang-echo-sample/utils/logger"
 	"github.com/haitwang-cloud/golang-echo-sample/utils/middlewares"
 	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
-	echoSwagger "github.com/swaggo/echo-swagger"
-	_ "github.com/swaggo/echo-swagger/example/docs"
 )
+
+// @title           Go-Echo-Sample
+// @version         1.0
+// @description     This is a sample golang-echo-web server.
+// @termsOfService  http://swagger.io/terms/
+
+// @license.name  Apache 2.0
+// @license.url   http://www.apache.org/licenses/LICENSE-2.0.html
+
+// @host      localhost:8080
 
 func main() {
 	// Echo instance
@@ -24,8 +33,8 @@ func main() {
 	wrapper := middlewares.NewWrapper(envConfig, zapLogger)
 	middlewares.InitMiddleware(e, wrapper)
 
-	e.Use(middleware.Recover())
-	e.GET("/swagger/*", echoSwagger.WrapHandler)
+	// Routes
+	router.InitRoutes(e, wrapper)
 
 	// Start server
 	if err := e.Start(":8080"); err != nil {

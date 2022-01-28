@@ -6,38 +6,51 @@ Make an out-of-the-box backend based on golang-echo
 Echo + MySQL + go-resty + Gorm + ZAP +configor
 ```
 
+### Project screen shoot
+![](./sample.gif)
+
+```bash
+http://localhost:8080/swagger
+```
 ### Tree view
 
 ```bash
 .
-├── application.yml
-├── client
-│  ├── bible.go
-│  ├── bible_test.go
-│  ├── models.go
-│  └── resp.go
-├── docker
-│  ├── build.sh
-│  └── run.sh
 ├── Dockerfile
+├── LICENSE
+├── README.md
+├── application.yml
+├── controller
+│   ├── bible.go
+│   ├── models.go
+│   └── resp.go
+├── docker
+│   ├── build.sh
+│   └── run.sh
 ├── docs
-│  ├── docs.go
-│  ├── swagger.json
-│  └── swagger.yaml
+│   ├── docs.go
+│   ├── swagger.json
+│   └── swagger.yaml
 ├── go.mod
 ├── go.sum
-├── LICENSE
 ├── main.go
-├── README.md
+├── models
+├── router
+│   ├── bible.go
+│   ├── router.go
+│   └── url.go
+├── sample.gif
 └── utils
-   ├── config
-   │  └── config.go
-   ├── logger
-   │  └── logger.go
-   ├── middlewares
-   │  ├── logMiddleware.go
-   │  └── wrapper.go
-   └── util.go
+    ├── config
+    │   └── config.go
+    ├── logger
+    │   └── logger.go
+    ├── middlewares
+    │   ├── error.go
+    │   ├── initMiddleware.go
+    │   └── wrapper.go
+    └── util.go
+
 ```
 
 ## Docker

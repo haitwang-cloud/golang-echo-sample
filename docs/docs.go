@@ -17,12 +17,109 @@ var doc = `{
     "info": {
         "description": "{{escape .Description}}",
         "title": "{{.Title}}",
+        "termsOfService": "http://swagger.io/terms/",
         "contact": {},
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
         "version": "{{.Version}}"
     },
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
-    "paths": {}
+    "paths": {
+        "/api/bible/result": {
+            "get": {
+                "description": "Provides grabbing bible verses and passages",
+                "tags": [
+                    "bible"
+                ],
+                "summary": "Show an account",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controller.BiBleResult"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.HttpError"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/controller.HttpError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.HttpError"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "controller.BiBleResult": {
+            "type": "object",
+            "properties": {
+                "reference": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "translation_id": {
+                    "type": "string"
+                },
+                "translation_name": {
+                    "type": "string"
+                },
+                "translation_note": {
+                    "type": "string"
+                },
+                "verses": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "book_id": {
+                                "type": "string"
+                            },
+                            "book_name": {
+                                "type": "string"
+                            },
+                            "chapter": {
+                                "type": "integer"
+                            },
+                            "text": {
+                                "type": "string"
+                            },
+                            "verse": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "controller.HttpError": {
+            "type": "object",
+            "properties": {
+                "error_code": {
+                    "type": "integer"
+                },
+                "error_message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
 }`
 
 type swaggerInfo struct {
@@ -36,12 +133,12 @@ type swaggerInfo struct {
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = swaggerInfo{
-	Version:     "",
-	Host:        "",
+	Version:     "1.0",
+	Host:        "localhost:8080",
 	BasePath:    "",
 	Schemes:     []string{},
-	Title:       "",
-	Description: "",
+	Title:       "Go-Echo-Sample",
+	Description: "This is a sample golang-echo-web server.",
 }
 
 type s struct{}

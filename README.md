@@ -10,36 +10,34 @@ Echo + MySQL + go-resty + Gorm + ZAP +configor
 
 ```bash
 .
-├── Dockerfile
-├── LICENSE
-├── README.md
 ├── application.yml
 ├── client
-│   ├── bible.go
-│   ├── bible_test.go
-│   ├── models.go
-│   └── resp.go
+│  ├── bible.go
+│  ├── bible_test.go
+│  ├── models.go
+│  └── resp.go
 ├── docker
-│   ├── build.sh
-│   └── run.sh
+│  ├── build.sh
+│  └── run.sh
+├── Dockerfile
 ├── docs
-│   ├── docs.go
-│   ├── swagger.json
-│   └── swagger.yaml
+│  ├── docs.go
+│  ├── swagger.json
+│  └── swagger.yaml
 ├── go.mod
 ├── go.sum
+├── LICENSE
 ├── main.go
+├── README.md
 └── utils
-    ├── config
-    │   └── config.go
-    ├── logger
-    │   └── logger.go
-    ├── middlewares
-    │   ├── logMiddleware.go
-    │   └── wrapper.go
-    └── util.go
-
-
+   ├── config
+   │  └── config.go
+   ├── logger
+   │  └── logger.go
+   ├── middlewares
+   │  ├── logMiddleware.go
+   │  └── wrapper.go
+   └── util.go
 ```
 
 ## Docker

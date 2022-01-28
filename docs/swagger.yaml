@@ -1,4 +1,71 @@
+definitions:
+  controller.BiBleResult:
+    properties:
+      reference:
+        type: string
+      text:
+        type: string
+      translation_id:
+        type: string
+      translation_name:
+        type: string
+      translation_note:
+        type: string
+      verses:
+        items:
+          properties:
+            book_id:
+              type: string
+            book_name:
+              type: string
+            chapter:
+              type: integer
+            text:
+              type: string
+            verse:
+              type: integer
+          type: object
+        type: array
+    type: object
+  controller.HttpError:
+    properties:
+      error_code:
+        type: integer
+      error_message:
+        type: string
+    type: object
+host: localhost:8080
 info:
   contact: {}
-paths: {}
+  description: This is a sample golang-echo-web server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Go-Echo-Sample
+  version: "1.0"
+paths:
+  /api/bible/result:
+    get:
+      description: Provides grabbing bible verses and passages
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.BiBleResult'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.HttpError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/controller.HttpError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.HttpError'
+      summary: Show an account
+      tags:
+      - bible
 swagger: "2.0"

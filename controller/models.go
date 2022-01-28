@@ -1,11 +1,11 @@
-package client
+package controller
 
 type HttpError struct {
 	Code    int    `json:"error_code,omitempty"`
 	Message string `json:"error_message,omitempty"`
 }
 
-type Result struct {
+type BiBleResult struct {
 	Reference string `json:"reference"`
 	Verses    []struct {
 		BookID   string `json:"book_id"`

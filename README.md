@@ -78,4 +78,7 @@ sh docker/run.sh
 - [https://github.com/brpaz/echozap](https://github.com/brpaz/echozap)
 - [https://github.com/sandipb/zap-examples](https://github.com/sandipb/zap-examples)
 
+## Commit History
+
+[![Commit History Chart](https://commit-history-api.herokuapp.com/svg?repos=haitwang-cloud/golang-echo-sample&type=Timeline)](https://the-commit-history.vercel.app/#haitwang-cloud/golang-echo-sample&Timeline)
 

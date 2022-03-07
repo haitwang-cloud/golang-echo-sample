@@ -2,11 +2,12 @@ FROM golang:1.16-alpine
 
 WORKDIR /app
 
+COPY ./ app
+
 COPY go.mod ./
 COPY go.sum ./
+RUN export GOPROXY=https://goproxy.io,direct
 RUN go mod download
-
-COPY *.go ./
 
 RUN go build -o /golang-echo-sample
 

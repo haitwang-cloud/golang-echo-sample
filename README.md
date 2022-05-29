@@ -2,6 +2,7 @@
 
 Make an out-of-the-box backend based on golang-echo
 
+[![golangci-lint](https://github.com/haitwang-cloud/golang-echo-sample/actions/workflows/golangci-lint.yml/badge.svg)](https://github.com/haitwang-cloud/golang-echo-sample/actions/workflows/golangci-lint.yml)
 ```bash
 Echo + MySQL + go-resty + Gorm + ZAP +configor
 ```

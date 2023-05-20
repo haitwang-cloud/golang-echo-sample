@@ -1,4 +1,4 @@
-# golang-echo-sample
+# UFES-TFAP-TEST
 
 Make an out-of-the-box backend based on golang-echo
 
@@ -59,13 +59,13 @@ http://localhost:8080/swagger
 ### how to build
 
 ```bash
-sh docker/build.sh
+make build
 ```
 
 ### how to run
 
 ```bash
-sh docker/run.sh
+make test
 ```
 
 ## References
@@ -75,6 +75,7 @@ sh docker/run.sh
 - [https://github.com/uber-go/zap](https://github.com/uber-go/zap)
 - [https://github.com/jinzhu/configor](https://github.com/jinzhu/configor)
 - [https://github.com/go-resty/resty](https://github.com/go-resty/resty)
+- [https://github.com/swaggo/swag#declarative-comments-format](https://github.com/swaggo/swag#declarative-comments-format)
 - [https://github.com/ybkuroki/go-webapp-sample](https://github.com/ybkuroki/go-webapp-sample)
 - [https://github.com/brpaz/echozap](https://github.com/brpaz/echozap)
 - [https://github.com/sandipb/zap-examples](https://github.com/sandipb/zap-examples)

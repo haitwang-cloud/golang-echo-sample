@@ -2,13 +2,14 @@ package middlewares
 
 import (
 	"fmt"
+	"net/http"
+	"time"
+
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	echoSwagger "github.com/swaggo/echo-swagger"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
-	"net/http"
-	"time"
 )
 
 func InitMiddleware(e *echo.Echo, wrapper Wrapper) {
@@ -53,9 +54,9 @@ func RequestLoggerMiddleware(wrapper Wrapper) echo.MiddlewareFunc {
 			case n >= 400:
 				wrapper.GetLogger().GetZapLogger().With(zap.Error(err)).Warn("Client error", fields)
 			case n >= 300:
-				wrapper.GetLogger().GetZapLogger().Info("Redirection", fields)
+				wrapper.GetLogger().GetZapLogger().Debugf("Redirection", fields)
 			default:
-				wrapper.GetLogger().GetZapLogger().Info("Success", fields)
+				wrapper.GetLogger().GetZapLogger().Debugf("Success", fields)
 			}
 
 			return nil

@@ -2,6 +2,7 @@
 
 Make an out-of-the-box backend based on golang-echo
 
+[![golangci-lint](https://github.com/haitwang-cloud/golang-echo-sample/actions/workflows/golangci-lint.yml/badge.svg)](https://github.com/haitwang-cloud/golang-echo-sample/actions/workflows/golangci-lint.yml)
 ```bash
 Echo + MySQL + go-resty + Gorm + ZAP +configor
 ```
@@ -79,4 +80,7 @@ make test
 - [https://github.com/brpaz/echozap](https://github.com/brpaz/echozap)
 - [https://github.com/sandipb/zap-examples](https://github.com/sandipb/zap-examples)
 
+## Commit History
+
+[![Commit History Chart](https://commit-history-api.herokuapp.com/svg?repos=haitwang-cloud/golang-echo-sample&type=Timeline)](https://the-commit-history.vercel.app/#haitwang-cloud/golang-echo-sample&Timeline)
 
